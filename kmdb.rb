@@ -69,27 +69,41 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
+Movies.destroy_all
+People.destroy_all
+Roles.destroy_all
 
 # Generate models and tables, according to the domain model
-# TODO!
+attributes = {
+    id: "",
+    title: "",
+    year_released: "",
+    rated: "",
+    person_id: ""
+  }
+
+batman = Movies.new(attributes)
+batman.save
+
+puts "There are #{Movies.all.count} rows."
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
 # Prints a header for the movies output
-puts "Movies"
-puts "======"
-puts ""
+# puts "Movies"
+# puts "======"
+# puts ""
 
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
 # Prints a header for the cast output
-puts ""
-puts "Top Cast"
-puts "========"
-puts ""
+# puts ""
+# puts "Top Cast"
+# puts "========"
+# puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
