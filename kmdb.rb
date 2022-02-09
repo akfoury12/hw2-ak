@@ -69,27 +69,57 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
-Movies.destroy_all
-People.destroy_all
-Roles.destroy_all
+Movie.destroy_all
+Person.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model
-attributes = {
-    id: "",
-    title: "",
-    year_released: "",
-    rated: "",
-    person_id: ""
-  }
-
-batman = Movies.new(attributes)
-batman.save
-
-puts "There are #{Movies.all.count} rows."
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+Person.name="Christian Bale"
+Person.name="Michael Caine"
+Person.name="Liam Neeson"
+Person.name="Katie Holmes"
+Person.name="Gary Oldman"
+Person.name="Heath Ledger"
+Person.name="Aaron Eckhart"
+Person.name="Maggie Gyllenhaal"
+Person.name="Tom Hardy"
+Person.name="Joseph Gordon-Levitt"
+Person.name="Anne Hathaway"
+
+
+attributes = {
+  title: "Batman Begins",
+  year_released: "2005",
+  rated: "PG-13",
+  person_id: "FIX"
+}
+batman = Movie.new(attributes)
+batman.save
+
+attributes = {
+title: "The Dark Knight",
+year_released: "2008",
+rated: "PG-13",
+person_id: "FIX"
+}
+thedarkknight = Movie.new(attributes)
+thedarkknight.save
+
+attributes = {
+title: "The Dark Knight Rises",
+year_released: "2012",
+rated: "PG-13",
+person_id: "FIX"
+}
+thedarkknightrises = Movie.new(attributes)
+thedarkknightrises.save
+
+puts Movie.all.count
 
 # Prints a header for the movies output
 # puts "Movies"
