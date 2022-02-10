@@ -79,24 +79,27 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-Person.name="Christian Bale"
-Person.name="Michael Caine"
-Person.name="Liam Neeson"
-Person.name="Katie Holmes"
-Person.name="Gary Oldman"
-Person.name="Heath Ledger"
-Person.name="Aaron Eckhart"
-Person.name="Maggie Gyllenhaal"
-Person.name="Tom Hardy"
-Person.name="Joseph Gordon-Levitt"
-Person.name="Anne Hathaway"
+#data loop for Person table
+list = ["Christian Bale", "Michael Caine", "Liam Neeson", "Katie Holmes", "Gary Oldman", "Heath Ledger", "Aaron Eckhart", "Maggie Gyllenhaal",
+       "Tom Hardy", "Joseph Gordon-Levitt", "Anne Hathaway","Christopher Nolan"]
 
+for a in list
+    person=Person.new
+    person.write_attribute(:name, "#{a}")
+    person.save
+end
 
+puts Person.all.count
+
+director=Person.where({name: "Christopher Nolan"})[0]
+puts director.id
+
+#hash inputs for movie table
 attributes = {
   title: "Batman Begins",
   year_released: "2005",
   rated: "PG-13",
-  person_id: "FIX"
+  person_id: director.id
 }
 batman = Movie.new(attributes)
 batman.save
@@ -105,7 +108,7 @@ attributes = {
 title: "The Dark Knight",
 year_released: "2008",
 rated: "PG-13",
-person_id: "FIX"
+person_id: director.id 
 }
 thedarkknight = Movie.new(attributes)
 thedarkknight.save
@@ -114,7 +117,7 @@ attributes = {
 title: "The Dark Knight Rises",
 year_released: "2012",
 rated: "PG-13",
-person_id: "FIX"
+person_id: director.id 
 }
 thedarkknightrises = Movie.new(attributes)
 thedarkknightrises.save
