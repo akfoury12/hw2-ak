@@ -91,6 +91,7 @@ end
 
 puts Person.all.count
 
+
 director=Person.where({name: "Christopher Nolan"})[0]
 puts director.id
 
@@ -124,7 +125,8 @@ thedarkknightrises.save
 
 puts Movie.all.count
 
-#Roles
+#Roles - THIS IS WHERE IM STUCK - It seems very circular to construct the roles table like this , just to put it back into a more string-y format for the output. 
+# I must have missed something and am hung up on it...
 
 movieid=Movie.where({title: "Batman Begins"})[0]
 actorid=Person.where({name: "Christian Bale"})[0]
@@ -139,21 +141,19 @@ role.save
 
 puts Role.all.count
 
-
-
 # Prints a header for the movies output
-# puts "Movies"
-# puts "======"
-# puts ""
+puts "Movies"
+puts "======"
+puts ""
 
 # Query the movies data and loop through the results to display the movies output
 # TODO!
+#ALSO STRUGGLING WITH THIS
 
 # Prints a header for the cast output
-# puts ""
-# puts "Top Cast"
-# puts "========"
-# puts ""
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
-# TODO!
