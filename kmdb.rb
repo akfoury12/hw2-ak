@@ -79,7 +79,7 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-#data loop for Person table
+#PERSON TABLE
 list = ["Christian Bale", "Michael Caine", "Liam Neeson", "Katie Holmes", "Gary Oldman", "Heath Ledger", "Aaron Eckhart", "Maggie Gyllenhaal",
        "Tom Hardy", "Joseph Gordon-Levitt", "Anne Hathaway","Christopher Nolan"]
 
@@ -94,12 +94,12 @@ puts Person.all.count
 director=Person.where({name: "Christopher Nolan"})[0]
 puts director.id
 
-#hash inputs for movie table
+#MOVIE TABLE
 attributes = {
   title: "Batman Begins",
   year_released: "2005",
   rated: "PG-13",
-  person_id: director.id
+  person_id: director.id      
 }
 batman = Movie.new(attributes)
 batman.save
@@ -123,6 +123,23 @@ thedarkknightrises = Movie.new(attributes)
 thedarkknightrises.save
 
 puts Movie.all.count
+
+#Roles
+
+movieid=Movie.where({title: "Batman Begins"})[0]
+actorid=Person.where({name: "Christian Bale"})[0]
+attributes = {
+  movie_id: movieid.id,
+  person_id: actorid.id,
+  character_name: "Bruce Wayne"
+}
+
+role = Role.new(attributes)
+role.save
+
+puts Role.all.count
+
+
 
 # Prints a header for the movies output
 # puts "Movies"
