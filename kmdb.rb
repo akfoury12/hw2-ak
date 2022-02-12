@@ -125,21 +125,27 @@ thedarkknightrises.save
 
 puts Movie.all.count
 
-#Roles - THIS IS WHERE IM STUCK - It seems very circular to construct the roles table like this , just to put it back into a more string-y format for the output. 
-# I must have missed something and am hung up on it...
+#Roles
+castings= [ 
+    {title: "Batman Begins", name:"Christian Bale",character_name:"Bruce Wayne"}
+    ## NOW Can Add rest of them
+  ]
 
-movieid=Movie.where({title: "Batman Begins"})[0]
-actorid=Person.where({name: "Christian Bale"})[0]
-attributes = {
-  movie_id: movieid.id,
-  person_id: actorid.id,
-  character_name: "Bruce Wayne"
-}
+for casting in castings
+  puts casting.inspect
+    movieid=Movie.where({title: casting[:title]})[0]
+    actorid=Person.where({name: casting[:name]})[0]
+    attributes = {
+      movie_id: movieid.id,
+      person_id: actorid.id,
+      character_name: casting[:character_name]
+    }
+    role = Role.new(attributes)
+    role.save
+    puts Role.all.count
+end
 
-role = Role.new(attributes)
-role.save
 
-puts Role.all.count
 
 # Prints a header for the movies output
 puts "Movies"
@@ -147,8 +153,15 @@ puts "======"
 puts ""
 
 # Query the movies data and loop through the results to display the movies output
-# TODO!
-#ALSO STRUGGLING WITH THIS
+
+movies=Movie.all
+
+for movie in movies
+  person=Person.where({id: movie[:person_id]})[0]
+  puts "#{movie.title} #{movie.year_released} #{movie.rated} #{person.name}" 
+end
+
+
 
 # Prints a header for the cast output
 puts ""
