@@ -127,7 +127,21 @@ puts Movie.all.count
 
 #Roles
 castings= [ 
-    {title: "Batman Begins", name:"Christian Bale",character_name:"Bruce Wayne"}
+    {title: "Batman Begins", name:"Christian Bale", character_name:"Bruce Wayne"},
+    {title: "Batman Begins", name:"Michael Caine", character_name:"Alfred"},
+    {title: "Batman Begins", name:"Liam Neeson", character_name:"Ra's Al Ghul"},
+    {title: "Batman Begins", name:"Katie Holmes", character_name:"Rachel Dawes"},
+    {title: "Batman Begins", name:"Gary Oldman", character_name:"Commissioner Gordon"},
+    {title: "The Dark Knight", name:"Christian Bale", character_name:"Bruce Wayne"},
+    {title: "The Dark Knight", name:"Heath Ledger", character_name:"Joker"},
+    {title: "The Dark Knight", name:"Aaron Eckhart", character_name:"Harvey Dent"},
+    {title: "The Dark Knight", name:"Michael Caine", character_name:"Alfred"},
+    {title: "The Dark Knight", name:"Maggie Gyllenhaal", character_name:"Rachel Dawes"},
+    {title: "The Dark Knight Rises", name:"Christian Bale", character_name:"Bruce Wayne"},
+    {title: "The Dark Knight Rises", name:"Gary Oldman", character_name:"Commissioner Gordon"},
+    {title: "The Dark Knight Rises", name:"Tom Hardy", character_name:"Bane"},
+    {title: "The Dark Knight Rises", name:"Joseph Gordon-Levitt", character_name:"John Blake"},
+    {title: "The Dark Knight Rises", name:"Anne Hathaway", character_name:"Selina Kyle"}
     ## NOW Can Add rest of them
   ]
 
@@ -170,3 +184,10 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
+roles=Role.all
+
+for role in roles
+  person=Person.where({id: role[:person_id]})[0]
+  movie=Movie.where({id: role[:movie_id]})[0]
+  puts "#{movie.title} #{person.name} #{role.character_name}" 
+end
